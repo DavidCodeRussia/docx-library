@@ -1,13 +1,17 @@
-import { Document, Paragraph } from 'docx';
+//@ts-nocheck
+import { Document, Paragraph } from "docx";
 
 export class DocumentCreator {
-  public create(): Document {
+  public create(educations): Document {
     const document = new Document({
       sections: [
         {
           children: [
             new Paragraph({
-              text: 'Dolan Miu',
+              text: "mock data",
+            }),
+            ...educations.map((education) => {
+              const arr = [];
             }),
           ],
         },
