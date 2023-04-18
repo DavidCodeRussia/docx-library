@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from "react";
 import { render } from "react-dom";
 import { saveAs } from "file-saver";
 import { Packer } from "docx";
-
 import { DocumentCreator } from "./components/Form/cv-owngenerator";
 import Form from "./components/Form";
 
@@ -18,7 +17,7 @@ const App: React.FC<AppProps, AppState> = () => {
 
   function generate() {
     const documentCreator = new DocumentCreator();
-    const doc = documentCreator.create();
+    const doc = documentCreator.create([state]);
 
     Packer.toBlob(doc).then((blob) => {
       saveAs(blob, "example.docx");

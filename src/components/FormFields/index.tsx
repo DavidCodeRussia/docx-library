@@ -7,6 +7,7 @@ const FormFields = () => {
   return (
     <>
       <div className="form-group">
+        <label htmlFor="myText"></label>
         <Field
           id={"myText"}
           name={"myText"}
@@ -17,6 +18,7 @@ const FormFields = () => {
         />
       </div>
       <div className="form-group">
+        <label htmlFor="myEmail"></label>
         <Field
           id={"myEmail"}
           name={"myEmail"}
@@ -26,9 +28,9 @@ const FormFields = () => {
           placeholder="text"
         />
       </div>
-      <div className="form-group">
+      {/* <div className="form-group">
         <input type="file" />
-      </div>
+      </div> */}
       <div className={"form-group form-check"}>
         <input type="checkbox" className="form-check-input" id={"myCheckbox"} />
         <label className="form-check-label" htmlFor="myCheckbox">

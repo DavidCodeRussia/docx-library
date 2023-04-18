@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { Formik } from "formik";
+import ArrayFormFields from "../ArrayFormFields";
 import FormFields from "../FormFields";
 
 const initialValues = {
@@ -25,7 +26,8 @@ const Form = ({ setState }) => {
                   {({ values, handleSubmit }) => {
                     return (
                       <form onSubmit={handleSubmit}>
-                        <FormFields />
+                        {/* <FormFields /> */}
+                        <ArrayFormFields />
                       </form>
                     );
                   }}
