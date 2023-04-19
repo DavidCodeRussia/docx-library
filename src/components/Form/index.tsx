@@ -1,14 +1,7 @@
-//@ts-nocheck
-import { Formik } from "formik";
 import ArrayFormFields from "../ArrayFormFields";
-import FormFields from "../FormFields";
+import { TFormProps } from "./types/index";
 
-const initialValues = {
-  myText: "",
-  myEmail: "",
-};
-
-const Form = ({ setState }) => {
+const Form: React.FC<TFormProps> = ({ setState }) => {
   return (
     <>
       <div className="container">
@@ -17,21 +10,7 @@ const Form = ({ setState }) => {
             <div className="card mt-5">
               <div className="card-body">
                 <div className="card-title">Форма</div>
-
-                <Formik
-                  onSubmit={(values) => {
-                    setState(values);
-                  }}
-                  initialValues={initialValues}>
-                  {({ values, handleSubmit }) => {
-                    return (
-                      <form onSubmit={handleSubmit}>
-                        {/* <FormFields /> */}
-                        <ArrayFormFields />
-                      </form>
-                    );
-                  }}
-                </Formik>
+                <ArrayFormFields setState={setState} />
               </div>
             </div>
           </div>

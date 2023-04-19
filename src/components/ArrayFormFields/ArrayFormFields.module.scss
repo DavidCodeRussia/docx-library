@@ -1,0 +1,25 @@
+.buttonAddField {
+  border: none;
+  background-color: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.buttonAddField:hover {
+  background-color: gray;
+  transition: 0.35 ease all;
+}
+
+.buttonEditor {
+  border: none;
+  background-color: none;
+  border-radius: 50%;
+  margin: 10px 10px 10px 10px;
+  min-width: 25px;
+
+  float: right;
+}
+
+.buttonGetFile {
+  margin-top: 10px;
+}

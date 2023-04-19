@@ -1,35 +1,33 @@
-//@ts-nocheck
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { render } from "react-dom";
 import { saveAs } from "file-saver";
 import { Packer } from "docx";
 import { DocumentCreator } from "./components/Form/cv-owngenerator";
 import Form from "./components/Form";
+import { TStateInApp } from "./types";
 
-interface AppProps {}
-interface AppState {
-  name: string;
-}
-
-const App: React.FC<AppProps, AppState> = () => {
+const App = () => {
   const skipFirstRender = useRef(false);
-  const [state, setState] = React.useState(null);
+  const [state, setState] = React.useState<TStateInApp>(null);
 
-  function generate() {
-    const documentCreator = new DocumentCreator();
-    const doc = documentCreator.create([state]);
+  const memoizedGenerate = useCallback(
+    function generate() {
+      const documentCreator = new DocumentCreator();
+      const doc = documentCreator.create(state!.fields);
 
-    Packer.toBlob(doc).then((blob) => {
-      saveAs(blob, "example.docx");
-    });
-  }
+      Packer.toBlob(doc).then((blob) => {
+        saveAs(blob, "example.docx");
+      });
+    },
+    [state],
+  );
 
   useEffect(() => {
     if (skipFirstRender.current) {
-      generate();
+      memoizedGenerate();
     }
     skipFirstRender.current = true;
-  }, [state]);
+  }, [state, memoizedGenerate]);
 
   return (
     <div>

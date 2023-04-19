@@ -1,8 +1,8 @@
-//@ts-nocheck
 import { Document, Paragraph, TabStopPosition, TabStopType, TextRun } from "docx";
+import { TBlockOfForm } from "../../types";
 
 export class DocumentCreator {
-  public create(educations): Document {
+  public create(educations: TBlockOfForm[]): Document {
     const document = new Document({
       sections: [
         {
@@ -10,7 +10,7 @@ export class DocumentCreator {
             ...educations
               .map((education) => {
                 const arr = [];
-                arr.push(this.createInstitutionHeader(education.myText, education.myEmail));
+                arr.push(this.createInstitutionHeader(education.name, education.surname));
                 return arr;
               })
               .reduce((prev, curr) => prev.concat(curr), []),
